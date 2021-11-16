@@ -1,1 +1,189 @@
+CREATE TABLE Plantacao (
 
+                IdPlantacao   NUMBER NOT NULL,
+                TipoPlantacao VARCHAR2(25) NOT NULL,
+                tamanho       FLOAT NOT NULL,
+                DataPlantio   VARCHAR2(8) NOT NULL,
+                DataColheita  VARCHAR2(8) NOT NULL,
+                CONSTRAINT IDPLANTACAO PRIMARY KEY (IdPlantacao)
+);
+
+
+CREATE TABLE Notificacao (
+
+                IdEmail  NUMBER NOT NULL,
+                email    VARCHAR2(40) NOT NULL,
+                Tel      NUMBER(11) NOT NULL,
+                CONSTRAINT EMAIL PRIMARY KEY (IdEmail)
+);
+
+
+CREATE TABLE Endereco (
+
+                IdEndereco  NUMBER NOT NULL,
+                Cep         NUMBER(8) NOT NULL,
+                logradouro  VARCHAR2(60) NOT NULL,
+                LocalPlantacao VARCHAR2(60) NOT NULL,
+                CONSTRAINT ENDERECO PRIMARY KEY (IdEndereco)
+);
+
+
+CREATE TABLE Telefone (
+
+                IdTel     NUMBER NOT NULL,
+                DDD       NUMBER NOT NULL,
+                telefone  NUMBER(9) NOT NULL,
+                CONSTRAINT TELEFONE PRIMARY KEY (IdTel)
+);
+
+CREATE TABLE Pessoa (
+
+                IdPessoa     NUMBER NOT NULL,
+                Cpf          VARCHAR2(20) NOT NULL,
+                NomePessoa   VARCHAR2(20) NOT NULL,
+                CONSTRAINT PESSOA PRIMARY KEY (IdPessoa)
+);
+
+CREATE TABLE PessoaNotificacao(
+
+                IdPessoa    VARCHAR2(20) NOT NULL,
+                IdEmail     NUMBER NOT NULL
+);
+
+CREATE TABLE PessoaTelefone(
+
+                IdPessoa    Varchar2(20) NOT NULL,
+                idTel       NUMBER NOT NULL
+);
+
+CREATE TABLE PessoaPlantacao(
+
+                IdPessoa    VARCHAR2(20) NOT NULL,
+                IdPlantacao NUMBER NOT NULL
+);
+
+CREATE TABLE PessoaEndereco(
+
+                IdPessoa    VARCHAR2(20) NOT NULL,
+                IdEndereco  NUMBER NOT NULL
+);
+
+
+-- TABELA PLANTACAO --
+
+INSERT INTO Plantacao (IdPlantacao, TipoPlantacao, tamanho, DataPlantio, DataColheita) VALUES ('001', 'Milho', '500', '05/10/21', 'dd/mm/yy'); 
+INSERT INTO Plantacao (IdPlantacao, TipoPlantacao, tamanho, DataPlantio, DataColheita) VALUES ('002', 'Trigo', '200', '07/9/21', 'dd/mm/yy'); 
+INSERT INTO Plantacao (IdPlantacao, TipoPlantacao, tamanho, DataPlantio, DataColheita) VALUES ('003', 'Algodão', '600', '01/03/21', '05/08/21'); 
+INSERT INTO Plantacao (IdPlantacao, TipoPlantacao, tamanho, DataPlantio, DataColheita) VALUES ('004', 'Soja', '1000', '20/01/21', '01/06/21'); 
+INSERT INTO Plantacao (IdPlantacao, TipoPlantacao, tamanho, DataPlantio, DataColheita) VALUES ('005', 'Milho', '100', '14/08/21', 'dd/mm/yy'); 
+INSERT INTO Plantacao (IdPlantacao, TipoPlantacao, tamanho, DataPlantio, DataColheita) VALUES ('006', 'Abobora', '300', '01/01/21', '11/03/21'); 
+INSERT INTO Plantacao (IdPlantacao, TipoPlantacao, tamanho, DataPlantio, DataColheita) VALUES ('007', 'Soja', '2000', '04/05/21', '15/10/21'); 
+INSERT INTO Plantacao (IdPlantacao, TipoPlantacao, tamanho, DataPlantio, DataColheita) VALUES ('008', 'Cenoura', '250', '05/04/21', 'Perdido'); 
+INSERT INTO Plantacao (IdPlantacao, TipoPlantacao, tamanho, DataPlantio, DataColheita) VALUES ('009', 'Uva', '500', '15/10/21', 'dd/mm/yy'); 
+
+-- TABELA NOTIFICACAO --
+
+INSERT INTO Notificacao (IdEmail, email,Tel) VALUES ('010', 'madalen2755@uorak.com','(65) 15386-7318');
+INSERT INTO Notificacao (IdEmail, email,Tel) VALUES ('020', 'cora8@gmail.com','(87) 65539-2557');
+INSERT INTO Notificacao (IdEmail, email,Tel) VALUES ('030', 'richie_funk@gmail.com','(13) 29110-1532');
+INSERT INTO Notificacao (IdEmail, email,Tel) VALUES ('040', 'petra.cruickshank38@yahoo.com','(12) 38384-9346');
+INSERT INTO Notificacao (IdEmail, email,Tel) VALUES ('050', 'noble.breitenberg@hotmail.com','(43) 41080-1742');
+INSERT INTO Notificacao (IdEmail, email,Tel) VALUES ('060', 'jamison65@hotmail.com','(55) 65191-1688');
+INSERT INTO Notificacao (IdEmail, email,Tel) VALUES ('070', 'dianna.lang@hotmail.com','(24) 24108-0820');
+INSERT INTO Notificacao (IdEmail, email,Tel) VALUES ('080', 'jessie.hoeger13@hotmail.com','(93) 70930-9721');
+INSERT INTO Notificacao (IdEmail, email,Tel) VALUES ('090', 'evert_leffler55@yahoo.com','(84) 24969-4955');
+
+-- TABELA ENDERECO --
+
+INSERT INTO Endereco (IdEndereco, Cep, Logradouro, LocalPlantacao) VALUES ('101', '93161-397', 'Mato Grosso', 'Caruaru');
+INSERT INTO Endereco (IdEndereco, Cep, Logradouro, LocalPlantacao) VALUES ('102', '58410-338', 'das Flores', 'Canoas');
+INSERT INTO Endereco (IdEndereco, Cep, Logradouro, LocalPlantacao) VALUES ('103', '57586-389', 'Treze', 'Corumbá');
+INSERT INTO Endereco (IdEndereco, Cep, Logradouro, LocalPlantacao) VALUES ('104', '60705-319', 'São Sebastião', 'Parnaíba');
+INSERT INTO Endereco (IdEndereco, Cep, Logradouro, LocalPlantacao) VALUES ('105', '89789-738', 'Primeiro de Maio', 'Rio Branco');
+INSERT INTO Endereco (IdEndereco, Cep, Logradouro, LocalPlantacao) VALUES ('106', '37051-194', 'Sete de Setembro', 'Patos');
+INSERT INTO Endereco (IdEndereco, Cep, Logradouro, LocalPlantacao) VALUES ('107', '67716-092', 'Vinte e Quatro', 'Teresina');
+INSERT INTO Endereco (IdEndereco, Cep, Logradouro, LocalPlantacao) VALUES ('108', '59549-114', 'Pará', 'Macapá');
+INSERT INTO Endereco (IdEndereco, Cep, Logradouro, LocalPlantacao) VALUES ('109', '79204-306', 'Santo Antônio', 'Novo Hamburgo');
+
+-- TABELA TELEFONE --
+
+INSERT INTO Telefone (IdTel, DDD, telefone) VALUES ('110', '65', '15386-7318');
+INSERT INTO Telefone (IdTel, DDD, telefone) VALUES ('120', '87', '15386-7318');
+INSERT INTO Telefone (IdTel, DDD, telefone) VALUES ('130', '13', '15386-7318');
+INSERT INTO Telefone (IdTel, DDD, telefone) VALUES ('140', '12', '15386-7318');
+INSERT INTO Telefone (IdTel, DDD, telefone) VALUES ('150', '43', '15386-7318');
+INSERT INTO Telefone (IdTel, DDD, telefone) VALUES ('160', '55', '15386-7318');
+INSERT INTO Telefone (IdTel, DDD, telefone) VALUES ('170', '24', '15386-7318');
+INSERT INTO Telefone (IdTel, DDD, telefone) VALUES ('180', '93', '15386-7318');
+INSERT INTO Telefone (IdTel, DDD, telefone) VALUES ('190', '84', '15386-7318');
+
+-- TABELA PESSOA --
+
+INSERT INTO Pessoa (IdPessoa,Cpf,NomePessoa) VALUES ('201', '769.298.543-01', 'MADELEN');
+INSERT INTO Pessoa (IdPessoa,Cpf,NomePessoa) VALUES ('202', '726.721.868-71', 'CORA');
+INSERT INTO Pessoa (IdPessoa,Cpf,NomePessoa) VALUES ('203', '002.862.409-20', 'RICHIE');
+INSERT INTO Pessoa (IdPessoa,Cpf,NomePessoa) VALUES ('204', '332.191.339-91', 'PETRA');
+INSERT INTO Pessoa (IdPessoa,Cpf,NomePessoa) VALUES ('205', '092.804.210-34', 'BREITENBERG');
+INSERT INTO Pessoa (IdPessoa,Cpf,NomePessoa) VALUES ('206', '168.195.828-70', 'JAMISON');
+INSERT INTO Pessoa (IdPessoa,Cpf,NomePessoa) VALUES ('207', '925.814.923-84', 'DIANNA');
+INSERT INTO Pessoa (IdPessoa,Cpf,NomePessoa) VALUES ('208', '523.465.590-32', 'JESSIE');
+INSERT INTO Pessoa (IdPessoa,Cpf,NomePessoa) VALUES ('209', '245.065.748-77', 'EVERT');
+
+-- TABELA PESSOANOTIFICACAO --
+
+INSERT INTO PessoaNotificacao (IdPessoa, IdEmail) VALUES ('201', '010');
+INSERT INTO PessoaNotificacao (IdPessoa, IdEmail) VALUES ('202', '020');
+INSERT INTO PessoaNotificacao (IdPessoa, IdEmail) VALUES ('203', '030');
+INSERT INTO PessoaNotificacao (IdPessoa, IdEmail) VALUES ('204', '040');
+INSERT INTO PessoaNotificacao (IdPessoa, IdEmail) VALUES ('205', '050');
+INSERT INTO PessoaNotificacao (IdPessoa, IdEmail) VALUES ('206', '060');
+INSERT INTO PessoaNotificacao (IdPessoa, IdEmail) VALUES ('207', '070');
+INSERT INTO PessoaNotificacao (IdPessoa, IdEmail) VALUES ('208', '080');
+INSERT INTO PessoaNotificacao (IdPessoa, IdEmail) VALUES ('209', '090');
+
+-- TABELA PESSOATELEFONE --
+
+INSERT INTO PessoaTelefone (IdPessoa, IdTel) VALUES ('201', '110');
+INSERT INTO PessoaTelefone (IdPessoa, IdTel) VALUES ('202', '120');
+INSERT INTO PessoaTelefone (IdPessoa, IdTel) VALUES ('203', '130');
+INSERT INTO PessoaTelefone (IdPessoa, IdTel) VALUES ('204', '140');
+INSERT INTO PessoaTelefone (IdPessoa, IdTel) VALUES ('205', '150');
+INSERT INTO PessoaTelefone (IdPessoa, IdTel) VALUES ('206', '160');
+INSERT INTO PessoaTelefone (IdPessoa, IdTel) VALUES ('207', '170');
+INSERT INTO PessoaTelefone (IdPessoa, IdTel) VALUES ('208', '180');
+INSERT INTO PessoaTelefone (IdPessoa, IdTel) VALUES ('209', '190');
+
+-- TABELA PESSOAPLANTACAO --
+
+INSERT INTO PessoaPlantacao (IdPessoa, IdPlantacao) VALUES ('201', '001');
+INSERT INTO PessoaPlantacao (IdPessoa, IdPlantacao) VALUES ('202', '002');
+INSERT INTO PessoaPlantacao (IdPessoa, IdPlantacao) VALUES ('203', '003');
+INSERT INTO PessoaPlantacao (IdPessoa, IdPlantacao) VALUES ('204', '004');
+INSERT INTO PessoaPlantacao (IdPessoa, IdPlantacao) VALUES ('205', '005');
+INSERT INTO PessoaPlantacao (IdPessoa, IdPlantacao) VALUES ('206', '006');
+INSERT INTO PessoaPlantacao (IdPessoa, IdPlantacao) VALUES ('207', '007');
+INSERT INTO PessoaPlantacao (IdPessoa, IdPlantacao) VALUES ('208', '008');
+INSERT INTO PessoaPlantacao (IdPessoa, IdPlantacao) VALUES ('209', '009');
+
+
+-- TABELA PESSOAENDERECO --
+
+INSERT INTO PessoaEndereco (IdPessoa, IdEndereco) VALUES ('201', '101');
+INSERT INTO PessoaEndereco (IdPessoa, IdEndereco) VALUES ('202', '102');
+INSERT INTO PessoaEndereco (IdPessoa, IdEndereco) VALUES ('203', '103');
+INSERT INTO PessoaEndereco (IdPessoa, IdEndereco) VALUES ('204', '104');
+INSERT INTO PessoaEndereco (IdPessoa, IdEndereco) VALUES ('205', '105');
+INSERT INTO PessoaEndereco (IdPessoa, IdEndereco) VALUES ('206', '106');
+INSERT INTO PessoaEndereco (IdPessoa, IdEndereco) VALUES ('207', '107');
+INSERT INTO PessoaEndereco (IdPessoa, IdEndereco) VALUES ('208', '108');
+INSERT INTO PessoaEndereco (IdPessoa, IdEndereco) VALUES ('209', '109');
+
+select * from plantacao
+select * from Notificacao
+select * from endereco
+select * from telefone
+select * from pessoa
+select * from pessoaplantacao
+select * from pessoanotificacao
+select * from pessoaendereco
+select * from pessoatelefone
